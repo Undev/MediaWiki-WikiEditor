@@ -326,4 +326,13 @@ class WikiEditorHooks {
 		$vars['wgWikiEditorMagicWords'] = $magicWords;
 	}
 
+    public static function onParserBeforeInternalParse( &$parser, &$text, &$strip_state)
+    {
+        $pattern = "/=/i";
+        $replace = "{{=}}";
+
+        $text = preg_replace($pattern, $replace, $text);
+
+        return true;
+    }
 }
