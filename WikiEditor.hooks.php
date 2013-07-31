@@ -329,7 +329,7 @@ class WikiEditorHooks {
     public static function onParserBeforeInternalParse( &$parser, &$text, &$strip_state)
     {
         $pattern = "/=/i";
-        $replace = "{{=}}";
+        $replace = "&#61;";
 
         $text = preg_replace($pattern, $replace, $text);
 
