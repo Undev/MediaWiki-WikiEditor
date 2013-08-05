@@ -328,9 +328,8 @@ class WikiEditorHooks {
 
     public static function onParserBeforeInternalParse( &$parser, &$text, &$strip_state)
     {
-        $pattern = "/=/i";
-        $replace = "&#61;";
-
+        $pattern = '/{{Tab(.*)=(.*)}}/is';
+        $replace = '{{Tab${1}&#61;${2}}}';
         $text = preg_replace($pattern, $replace, $text);
 
         return true;
