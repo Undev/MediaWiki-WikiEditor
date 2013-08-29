@@ -63,7 +63,7 @@ $wgHooks['GetPreferences'][] = 'WikiEditorHooks::getPreferences';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'WikiEditorHooks::resourceLoaderGetConfigVars';
 $wgHooks['MakeGlobalVariablesScript'][] = 'WikiEditorHooks::makeGlobalVariablesScript';
 $wgHooks['EditPageBeforeEditToolbar'][] = 'WikiEditorHooks::EditPageBeforeEditToolbar';
-$wgHooks['ParserBeforeInternalParse'][] = 'WikiEditorHooks::onParserBeforeInternalParse';
+//$wgHooks['ParserBeforeInternalParse'][] = 'WikiEditorHooks::onParserBeforeInternalParse';
 
 $wikiEditorTpl = array(
 	'localBasePath' => dirname( __FILE__ ) . '/modules',
