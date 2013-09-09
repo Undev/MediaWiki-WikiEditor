@@ -326,13 +326,15 @@ class WikiEditorHooks {
 		$vars['wgWikiEditorMagicWords'] = $magicWords;
 	}
 
-    public static function onParserBeforeInternalParse(&$parser, &$text, &$strip_state)
+    public static function onArticleAfterFetchContentObject( &$article, Content $content )
     {
-        if (strpos($text, '=')) {
-            $pattern = '/{{Tab(.*)=(.*)}}/is';
-            $replace = '{{Tab${1}&#61;${2}}}';
-            $text = preg_replace($pattern, $replace, $text);
-        }
+        $text = $content->getNativeData();
+
+        $pattern = '/{{Tab(.*)=(.*)}}/';
+        $replace = '{{Tab${1}&#61;${2}}}';
+        $text = preg_replace($pattern, $replace, $text);
+
+        $content = new WikitextContent($text);
 
         return true;
     }
