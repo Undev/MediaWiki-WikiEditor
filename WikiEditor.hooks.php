@@ -330,9 +330,16 @@ class WikiEditorHooks {
     {
         $text = $content->getNativeData();
 
-        $pattern = '/{{Tab(.*)=(.*)}}/';
-        $replace = '{{Tab${1}&#61;${2}}}';
-        $text = preg_replace($pattern, $replace, $text);
+        $matches = null;
+        $pattern = '%((https?://)|(www\.))([a-z0-9-].?)+(:[0-9]+)?(/.*)?$%im';
+        if (preg_match_all($pattern, $text, $matches)) {
+            foreach($matches[0] as $match) {
+                if (strpos($match, '=')) {
+                    $url = str_replace('=', '&#61;', $match);
+                    $text = str_replace($match, $url, $text);
+                }
+            }
+        }
 
         $content = new WikitextContent($text);
 
