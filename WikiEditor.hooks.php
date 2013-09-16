@@ -326,13 +326,14 @@ class WikiEditorHooks {
 		$vars['wgWikiEditorMagicWords'] = $magicWords;
 	}
 
-    public static function onArticleAfterFetchContentObject( &$article, Content $content )
+    public static function onArticleAfterFetchContentObject( Article &$article, Content &$content )
     {
         $text = $content->getNativeData();
 
         $matches = null;
         $pattern = '%((https?://)|(www\.))([a-z0-9-].?)+(:[0-9]+)?(/.*)?$%im';
         if (preg_match_all($pattern, $text, $matches)) {
+
             foreach($matches[0] as $match) {
                 if (strpos($match, '=')) {
                     $url = str_replace('=', '&#61;', $match);
@@ -341,7 +342,8 @@ class WikiEditorHooks {
             }
         }
 
-        $content = new WikitextContent($text);
+        $newContent = new WikitextContent($text);
+        $content = $newContent;
 
         return true;
     }
