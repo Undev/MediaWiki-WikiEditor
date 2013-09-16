@@ -333,7 +333,6 @@ class WikiEditorHooks {
         $matches = null;
         $pattern = '%((https?://)|(www\.))([a-z0-9-].?)+(:[0-9]+)?(/.*)?$%im';
         if (preg_match_all($pattern, $text, $matches)) {
-
             foreach($matches[0] as $match) {
                 if (strpos($match, '=')) {
                     $url = str_replace('=', '&#61;', $match);
@@ -342,8 +341,7 @@ class WikiEditorHooks {
             }
         }
 
-        $newContent = new WikitextContent($text);
-        $content = $newContent;
+        $content = new WikitextContent($text);
 
         return true;
     }
