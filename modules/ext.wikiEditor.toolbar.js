@@ -13,11 +13,6 @@ jQuery( document ).ready( function ( $ ) {
 	$( '#wpTextbox1' ).wikiEditor(
 		'addModule', $.wikiEditor.modules.toolbar.config.getDefaultConfig()
 	);
-    
-    $('.yellow-tab').css("background", "#FFF9D8 url(http://guides.rubyonrails.org/images/tab_note.gif) no-repeat left top");
-    $('.red-tab').css("background", "#F9D9D8 url(http://guides.rubyonrails.org/images/tab_red.gif) no-repeat left top");
-    $('.blue-tab').css("background", "#D5E9F6 url(http://guides.rubyonrails.org/images/tab_info.gif) no-repeat left top");
-    $('.green-tab').css("background", "#B7E8B8 url(http://wiki.undev.cc/images/8/8e/Tab-green.gif) no-repeat left top");
 
     if (typeof $ != 'undefined' && typeof $.fn.wikiEditor != 'undefined') {
         $(function () {
